@@ -1,0 +1,22 @@
+uuid: 3e660344-e003-476c-bb48-212ff7e63bad
+langcode: en
+status: true
+dependencies:
+  theme:
+    - thunder_admin
+_core:
+  default_config_hash: myY0w3cF8She3KplS2Tf10y8ARL8ReW2GGDCJMmFDcE
+id: thunder_admin_primary_local_tasks
+theme: thunder_admin
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

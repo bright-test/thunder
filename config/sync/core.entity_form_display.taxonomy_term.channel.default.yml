@@ -1,0 +1,54 @@
+uuid: 8f191031-d245-46e6-a7f8-43355e55a359
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.channel.field_meta_tags
+    - taxonomy.vocabulary.channel
+  module:
+    - metatag
+    - path
+    - text
+_core:
+  default_config_hash: CLpqBbQx7a8WZ6g2nbgsQ3OOsf9Yz0hFQ9fI93rjqk4
+id: taxonomy_term.channel.default
+targetEntityType: taxonomy_term
+bundle: channel
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 4
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+hidden: {  }

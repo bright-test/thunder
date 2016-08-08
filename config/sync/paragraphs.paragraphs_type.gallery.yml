@@ -1,0 +1,8 @@
+uuid: 1282fe55-106a-4ade-9ca5-54aa9164521c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: GTumT2xDJqDDeCfpyhKFa12oD3ABHSfDWpNK8lMh8uA
+id: gallery
+label: Gallery

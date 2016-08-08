@@ -1,0 +1,31 @@
+uuid: 169ea068-8250-4dfb-829a-c25636ed67d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.channel.field_meta_tags
+    - taxonomy.vocabulary.channel
+  module:
+    - metatag
+    - text
+_core:
+  default_config_hash: P0IpjEJ1R4fLL46JqcDAMI963VU-LD8V-H9_9S8IY64
+id: taxonomy_term.channel.default
+targetEntityType: taxonomy_term
+bundle: channel
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_tags:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+hidden:
+  langcode: true

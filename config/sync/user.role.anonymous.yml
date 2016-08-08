@@ -1,0 +1,16 @@
+uuid: 906db9a5-dd0c-40b4-9f0a-c82f113583e9
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: nopuwHCavoFyLaWnBb1hp_sOe4k80r44b4syQS_Rpho
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'use text format restricted_html'
+  - 'opt-in or out of tracking'
+  - 'view media'
+  - 'access user profiles'

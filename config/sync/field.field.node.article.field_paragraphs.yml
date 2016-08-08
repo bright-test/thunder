@@ -1,0 +1,60 @@
+uuid: f54af9eb-625b-4acd-8860-cbf8a2d4e0a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.article
+    - paragraphs.paragraphs_type.gallery
+    - paragraphs.paragraphs_type.instagram
+    - paragraphs.paragraphs_type.media
+    - paragraphs.paragraphs_type.quote
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.twitter
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: gwggmA1fhW_i8XhSREac9gS5Mvl63vP4IAoE443rlQw
+id: node.article.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: article
+label: Paragraphs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      text: text
+      quote: quote
+      media: media
+      instagram: instagram
+      gallery: gallery
+      twitter: twitter
+    target_bundles_drag_drop:
+      text:
+        enabled: true
+        weight: 2
+      quote:
+        enabled: true
+        weight: 3
+      media:
+        enabled: true
+        weight: 4
+      link:
+        weight: 6
+        enabled: false
+      instagram:
+        enabled: true
+        weight: 8
+      gallery:
+        enabled: true
+        weight: 9
+      twitter:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

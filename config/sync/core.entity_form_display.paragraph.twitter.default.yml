@@ -1,0 +1,29 @@
+uuid: 72cad0f6-a778-4985-8ec0-0e680f7f462a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.twitter.field_media
+    - paragraphs.paragraphs_type.twitter
+  module:
+    - inline_entity_form
+_core:
+  default_config_hash: VJ7dYILhiXJLP7XunUk3zTjpxUw6H7q44NBZA9w1YFY
+id: paragraph.twitter.default
+targetEntityType: paragraph
+bundle: twitter
+mode: default
+content:
+  field_media:
+    weight: 0
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+    third_party_settings: {  }
+    type: inline_entity_form_simple
+hidden:
+  created: true
+  status: true
+  uid: true

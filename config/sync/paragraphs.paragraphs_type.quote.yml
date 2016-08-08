@@ -1,0 +1,8 @@
+uuid: 32a8279e-1adb-42de-a05c-f4f98f038ffe
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: o7NoxA3SfPrB2ycFpc7F1JeWUhg7dzo11zxo79RMG1Y
+id: quote
+label: Quote

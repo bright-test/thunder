@@ -1,0 +1,21 @@
+uuid: 9aa81fcb-b8f8-4850-a2c4-ef63eb90ec33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_title
+    - node.type.article
+_core:
+  default_config_hash: 24zD2iqb0vnqxT3dgyTNQ68I9RTOzyWI0jN3KZOtOg0
+id: node.article.field_seo_title
+field_name: field_seo_title
+entity_type: node
+bundle: article
+label: 'SEO Title'
+description: 'Put the major keyword to the beginning.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

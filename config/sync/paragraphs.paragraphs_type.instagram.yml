@@ -1,0 +1,8 @@
+uuid: 0043281d-7696-4fdb-9cc5-7c08fe2085ac
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: NAQdIGHuu_3Igta5W_iWpKdjZVXcQ2V8j1SM61eH4M4
+id: instagram
+label: Instagram

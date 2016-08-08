@@ -1,0 +1,21 @@
+uuid: 6b2d0606-07bd-405d-bf39-f806e77de4ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - media_entity
+_core:
+  default_config_hash: '--YOy2r1JBvteuWPcoy13hT5XfkEFSJrkjRr2hp3DD8'
+id: media.field_url
+field_name: field_url
+entity_type: media
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: 1bf9cdc3-682e-4ee7-957f-82b5d79fa703
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 1rLMzXmDpyBjoromBUzATtqQVvGr1GIcdzB2JczmAZI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'use text format basic_html'
+  - 'create media'
+  - 'delete media'
+  - 'update media'
+  - 'view media'
+  - 'cancel account'
+  - 'change own username'
+  - 'access user profiles'

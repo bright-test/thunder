@@ -1,0 +1,25 @@
+uuid: 957c5b5e-c9c9-4ac6-938f-730b6f36e455
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_url
+    - media_entity.bundle.twitter
+  module:
+    - link
+_core:
+  default_config_hash: Pmf_eOhHXpD0FlYye_P6jhfyo2BGF2-hTVYC3WXCyNE
+id: media.twitter.field_url
+field_name: field_url
+entity_type: media
+bundle: twitter
+label: Url
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

@@ -1,0 +1,28 @@
+uuid: 914fb3ff-db38-4e14-8d96-857d57a75224
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media_entity.bundle.gallery
+    - paragraphs.paragraphs_type.gallery
+_core:
+  default_config_hash: '-9cii3RiHe97tVm_OEEHRKwfbPH4cjn-84XvyIgK_bU'
+id: paragraph.gallery.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: gallery
+label: Media
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      gallery: gallery
+    sort:
+      field: _none
+field_type: entity_reference

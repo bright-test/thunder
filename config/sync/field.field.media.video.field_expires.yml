@@ -1,0 +1,23 @@
+uuid: bf884928-1b00-4f53-9130-8183ad144c60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_expires
+    - media_entity.bundle.video
+  module:
+    - datetime
+_core:
+  default_config_hash: 5vB4GH944-v0S5EDlZXjQ8d0ifmZo2ydeCg2k30ZUyo
+id: media.video.field_expires
+field_name: field_expires
+entity_type: media
+bundle: video
+label: 'Expire Date'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

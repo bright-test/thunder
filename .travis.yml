@@ -102,6 +102,3 @@ script:
 
 after_success:
   - $TRAVIS_BUILD_DIR/ci/travis/scripts/deploy.sh
-
-notifications:
-  slack: burda-thunder:tZERC5knpxVIePPgokBdPZhI

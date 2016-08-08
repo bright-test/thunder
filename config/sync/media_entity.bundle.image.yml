@@ -1,0 +1,18 @@
+uuid: eda2f4f9-391f-4456-8b81-854b0a7d4ccf
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity_image
+_core:
+  default_config_hash: AUk-C4T5yoBXa9n5VeLBGlbn50YWInFgukzUpqJGMvU
+id: image
+label: Image
+description: ''
+type: image
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration:
+  source_field: field_image
+  gather_exif: '0'
+field_map: {  }

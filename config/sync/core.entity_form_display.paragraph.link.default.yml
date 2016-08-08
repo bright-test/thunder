@@ -1,0 +1,27 @@
+uuid: b3134fcd-0367-4de9-b36b-30ce6d69c8f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link.field_link
+    - paragraphs.paragraphs_type.link
+  module:
+    - link
+_core:
+  default_config_hash: b61_CpbxpMXLKPRejvU5N2WJF3zsTGloAleXyRkc-8k
+id: paragraph.link.default
+targetEntityType: paragraph
+bundle: link
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
