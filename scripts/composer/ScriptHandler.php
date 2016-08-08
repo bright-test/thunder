@@ -71,7 +71,19 @@ class ScriptHandler {
       $fs->copy($root . '/core/lib/Drupal.php', 'core/lib/Drupal.php', TRUE);
       $event->getIO()->write("Create dummy files for Drop Guard");
     }
-
+    $folders = ['profiles', 'sites', 'themes'];
+    $files = ['autoload.php', 'update.php', 'index.php'];
+    foreach ($folders as $folder) {
+      if (!$fs->exists($folder)) {
+        $fs->mkdir($folder);
+        $fs->touch($folder . '/.gitkeep');
+      }
+    }
+    foreach ($files as $file) {
+      if (!$fs->exists($file)) {
+        $fs->touch($file);
+      }
+    }
   }
 
   public static function dependencyCleanup() {
