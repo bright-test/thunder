@@ -1,104 +1,80 @@
 language: php
 sudo: false
-
 php:
-  - 5.6
-
+- 5.6
 git:
   depth: 5
-
 env:
   global:
-    # Set site environment
-    - AH_SITE_ENVIRONMENT=travis
-
-# travis will test and deploy only the branches and tags as show below
-# right now travis does not make a difference between branches and tags
-# tags starting with hotfix and tags in the form of "v1.0.0" will be tested
+  - AH_SITE_ENVIRONMENT=travis
 branches:
   only:
-    - master
-    - develop
-    - testing
-    - 8.x-1.x
-    - 8.x-2.x
-    - /^hotfix/
-    - /^v[0-9]+\.[0-9]+\.[0-9]+/
-
+  - master
+  - develop
+  - testing
+  - 8.x-1.x
+  - 8.x-2.x
+  - "/^hotfix/"
+  - "/^v[0-9]+\\.[0-9]+\\.[0-9]+/"
 mysql:
   database: drupal
   username: root
   encoding: utf8
-
-# Cache Composer & Drush directories.
 cache:
   directories:
-    - $HOME/.composer/cache
-    - $HOME/.drush/cache
-
+  - "$HOME/.composer/cache"
+  - "$HOME/.drush/cache"
+addons:
+  ssh_known_hosts: 139.59.209.220
 install:
-  # Disable debugging
-  - phpenv config-rm xdebug.ini
-
-  # Setup display for Selenium
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
-
-  # Increase the MySQL connection timeout on the PHP end.
-  - "mysql -e 'create database drupal;'"
-
-  # Build drush/phing dependencies
-  - travis_retry composer self-update && composer --version
-  - travis_retry composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
-  - export PATH="$TRAVIS_BUILD_DIR/bin:$PATH"
-
-  # Setting Behat environment
-  - BUILD_TOP=`dirname $TRAVIS_BUILD_DIR`
-  - BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"BUILD_TOP/docroot"}}}}'
-  - BEHAT_PARAMS=`echo $BEHAT_PARAMS | sed -e s#BUILD_TOP#$TRAVIS_BUILD_DIR#`
-  - export BEHAT_PARAMS
-
-  # Get Selenium
-  - wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar
-  - java -jar selenium-server-standalone-2.53.0.jar > /dev/null 2>&1 &
-
-  # Setup files
-  - chmod -R 777 docroot/sites/default
-  - cp ci/travis/travis.settings.php docroot/sites/default/settings.travis.php
-
-  # Disable sendmail
-  - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-
-  # set php timeouts
-  - echo "mysql.connect_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "default_socket_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-
-  # Increase the MySQL server timetout and packet size.
-  - mysql -e "SET GLOBAL wait_timeout = 36000;"
-  - mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
-
+- phpenv config-rm xdebug.ini
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
+- mysql -e 'create database drupal;'
+- travis_retry composer self-update && composer --version
+- travis_retry composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
+- export PATH="$TRAVIS_BUILD_DIR/bin:$PATH"
+- BUILD_TOP=`dirname $TRAVIS_BUILD_DIR`
+- BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"BUILD_TOP/docroot"}}}}'
+- BEHAT_PARAMS=`echo $BEHAT_PARAMS | sed -e s#BUILD_TOP#$TRAVIS_BUILD_DIR#`
+- export BEHAT_PARAMS
+- wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar
+- java -jar selenium-server-standalone-2.53.0.jar > /dev/null 2>&1 &
+- chmod -R 777 docroot/sites/default
+- cp ci/travis/travis.settings.php docroot/sites/default/settings.travis.php
+- echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "mysql.connect_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "default_socket_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- mysql -e "SET GLOBAL wait_timeout = 36000;"
+- mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
 before_script:
-  # Install site
-  - $TRAVIS_BUILD_DIR/bin/robo site:install $AH_SITE_ENVIRONMENT
-
-  # Start web server
-  - cd $TRAVIS_BUILD_DIR/docroot
-  - drush runserver 8888 > /dev/null 2>&1 &
-
-  - drush config-import --source=../config/sync --yes
-  - drush updb --yes
-  - drush config-import --source=../config/sync --yes
-  - drush pm-uninstall dblog --yes
-  - drush cset system.site page.front /taxonomy/term/1 --yes
-
-  # Test if server started
-  - nc -zvv localhost 4444; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 4444..."; nc -zvv localhost 4444; out=$?; sleep 1; done
-  - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
-
+- "$TRAVIS_BUILD_DIR/bin/robo site:install $AH_SITE_ENVIRONMENT"
+- cd $TRAVIS_BUILD_DIR/docroot
+- drush runserver 8888 > /dev/null 2>&1 &
+- drush config-import --source=../config/sync --yes
+- drush updb --yes
+- drush config-import --source=../config/sync --yes
+- drush pm-uninstall dblog --yes
+- drush cset system.site page.front /taxonomy/term/1 --yes
+- nc -zvv localhost 4444; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port
+  4444..."; nc -zvv localhost 4444; out=$?; sleep 1; done
+- nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port
+  8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
 script:
-  # Run Behat tests.
-  - $TRAVIS_BUILD_DIR/bin/behat --config $TRAVIS_BUILD_DIR/tests/behat/travis.behat.yml
-
+- "$TRAVIS_BUILD_DIR/bin/behat --config $TRAVIS_BUILD_DIR/tests/behat/travis.behat.yml"
 after_success:
-  - $TRAVIS_BUILD_DIR/ci/travis/scripts/deploy.sh
+- "$TRAVIS_BUILD_DIR/ci/travis/scripts/deploy.sh"
+before_install:
+- openssl aes-256-cbc -K $encrypted_7b98a0b2f732_key -iv $encrypted_7b98a0b2f732_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
+before_deploy:
+- eval "$(ssh-agent -s)"
+- chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
+- ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
+  on:
+    branch: master
