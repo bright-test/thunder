@@ -26,6 +26,9 @@ cache:
   - "$HOME/.drush/cache"
 addons:
   ssh_known_hosts: 139.59.209.220
+  apt:
+    packages:
+      - sshpass
 install:
 - phpenv config-rm xdebug.ini
 - export DISPLAY=:99.0
@@ -70,9 +73,11 @@ before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
 - ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
-  on:
-    branch: master
+#deploy:
+#  provider: script
+#  skip_cleanup: true
+#  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
+#  on:
+#    branch: master
+after_success:
+- sshpass -e scp -o stricthostkeychecking=no -r $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
