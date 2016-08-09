@@ -27,7 +27,7 @@
     ],
     "require": {
         "drupal/thunder": "1.0-beta9",
-        "drupal/dropguard": "1.1.0",
+        "drupal/dropguard": "1.0",
         "drupal/ds": "2.4",
         "drupal/views_slideshow": "4.0-alpha4",
         "drupal/embed": "1.0-rc2",
