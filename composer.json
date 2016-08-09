@@ -26,7 +26,7 @@
         }
     ],
     "require": {
-        "drupal/thunder": "1.0-beta8",
+        "burdamagazinorg/thunder": "8.1.0-beta9",
         "drupal/dropguard": "1.0",
         "burdamagazinorg/robo": "~2.0",
         "composer/installers": "^1.0",
