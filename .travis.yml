@@ -80,4 +80,4 @@ before_deploy:
 #  on:
 #    branch: master
 after_success:
-- sshpass -e scp -o stricthostkeychecking=no -r $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
+- scp -o stricthostkeychecking=no -r $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
