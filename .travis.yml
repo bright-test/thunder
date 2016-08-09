@@ -9,7 +9,6 @@ env:
   - AH_SITE_ENVIRONMENT=travis
 branches:
   only:
-  - master
   - update
 mysql:
   database: drupal
