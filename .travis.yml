@@ -69,10 +69,6 @@ script:
 before_install:
 - openssl aes-256-cbc -K $encrypted_7b98a0b2f732_key -iv $encrypted_7b98a0b2f732_iv
   -in deploy_rsa.enc -out deploy_rsa -d
-before_deploy:
-- eval "$(ssh-agent -s)"
-- chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
-- ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
 #deploy:
 #  provider: script
 #  skip_cleanup: true
@@ -80,4 +76,7 @@ before_deploy:
 #  on:
 #    branch: master
 after_success:
+- eval "$(ssh-agent -s)"
+- chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
+- ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
 - scp -o stricthostkeychecking=no -r $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
