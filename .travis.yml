@@ -73,4 +73,4 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
 - ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
-- rsync -o stricthostkeychecking=no -ru $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder --delete
+- rsync -o stricthostkeychecking=no -raz --progress $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www/thunder
