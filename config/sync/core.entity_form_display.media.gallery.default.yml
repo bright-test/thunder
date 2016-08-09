@@ -1,4 +1,4 @@
-uuid: f6b8d931-ec32-4518-b3b9-2a15d0511c99
+uuid: ac6df5e3-48a3-4e73-a442-88741fdd0c5f
 langcode: en
 status: true
 dependencies:
@@ -8,7 +8,7 @@ dependencies:
   module:
     - entity_browser
 _core:
-  default_config_hash: q6HHfteDUhDpe9-JZ_PHCR3pPjihQ5N-Ca4IqNkYYLk
+  default_config_hash: 1bi7YW-gd19rih5N-vfDvMg_WIZI_LqARpLhRNjvYoo
 id: media.gallery.default
 targetEntityType: media
 bundle: gallery
@@ -18,11 +18,12 @@ content:
     type: entity_browser_entity_reference
     weight: 1
     settings:
-      entity_browser: image_browser
+      entity_browser: multiple_image_browser
       field_widget_display: rendered_entity
       field_widget_edit: true
       field_widget_remove: true
       open: true
+      selection_mode: selection_edit
       field_widget_display_settings:
         view_mode: thumbnail
     third_party_settings: {  }
