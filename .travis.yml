@@ -10,12 +10,6 @@ env:
 branches:
   only:
   - master
-  - develop
-  - testing
-  - 8.x-1.x
-  - 8.x-2.x
-  - "/^hotfix/"
-  - "/^v[0-9]+\\.[0-9]+\\.[0-9]+/"
 mysql:
   database: drupal
   username: root
@@ -26,9 +20,6 @@ cache:
   - "$HOME/.drush/cache"
 addons:
   ssh_known_hosts: 139.59.209.220
-  apt:
-    packages:
-      - sshpass
 install:
 - phpenv config-rm xdebug.ini
 - export DISPLAY=:99.0
@@ -73,4 +64,5 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
 - ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
-- rsync -ravz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www
+- rsync -raz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $TRAVIS_BUILD_DIR root@139.59.209.220:/var/www
+- ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@139.59.209.220:/var/www/thunder "git checkout master && bin/robo site:update local"
